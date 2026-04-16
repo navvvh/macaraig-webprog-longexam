@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/img/nubdexchange_logo.png';
+import Newlogo from '../assets/img/Newlogo.png';
 
 const links = [
   { label: 'Home', to: '/' },
@@ -17,23 +17,38 @@ const navLinkClassName = ({ isActive }) =>
 
 const NavBar = () => {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-zinc-900 bg-zinc-100/95 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-zinc-900 bg-zinc-950 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <NavLink to="/" className="flex items-center gap-3">
-          <img src={logo} alt="BulldogEx" className="h-9 w-9 rounded-full border-2 border-zinc-900 bg-zinc-50 object-contain" />
+          <img src={Newlogo} alt="BulldogEx" className="h-15 w-15" />
           <div className="space-y-0.5">
-            <p className="text-xl font-bold text-zinc-900">BulldogEx Shop</p>
+            <p className="text-xl font-black uppercase tracking-tighter text-blue-500">BulldogEx Shop</p>
           </div>
         </NavLink>
 
+        <div className='flex items-center gap-1'>
         <nav className="hidden items-center gap-2 md:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} end={link.to === '/'} className={navLinkClassName}>
               {link.label}
             </NavLink>
           ))}
-        </nav>  
-      </div>
+        </nav>
+
+        <div className='h-8 w-px bg-blue-500 hidden md:block'></div>
+        
+        <div className='flex item-center'>
+          <NavLink to="/auth/signin" className={navLinkClassName} >
+            Sign In
+          </NavLink>
+          <NavLink to="/auth/signup" className={navLinkClassName}>
+            Sign Up
+          </NavLink>
+        </div>
+        </div> 
+      </div>  
+
+
     </header>
   );
 };
